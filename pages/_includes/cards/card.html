@@ -1,0 +1,74 @@
+<div class="card{% if include.collapsed %} card-collapsed{% endif %}">
+	{% if include.status-position %}
+	<div class="card-status-{{include.status-position}} bg-{{ include.status-color | default: 'blue' }}"></div>
+	{% endif %}
+
+   {% unless include.hide-header %}
+	<div class="card-header">
+		<h3 class="card-title">{{ include.title | default: 'Card title' }}</h3>
+
+		{% unless include.hide-options %}
+		<div class="card-options">
+			{% if include.show-form %}
+			<form action="">
+				<div class="input-group">
+					<input type="text" class="form-control form-control-sm" placeholder="Search something&hellip;" name="s">
+					<span class="input-group-btn ml-2">
+							<button class="btn btn-sm btn-secondary" type="submit">
+								{% include ui/icon.html icon="search" %}
+							</button>
+						</span>
+				</div>
+			</form>
+			{% elsif include.show-buttons %}
+			<a href="#" class="btn btn-primary btn-sm">Action 1</a>
+			<a href="#" class="btn btn-secondary btn-sm ml-2">Action 2</a>
+			{% elsif include.show-switch %}
+			   {% include ui/switch.html checked=true %}
+			{% elsif include.options %}
+			   {{ include.options }}
+			{% else %}
+			<a href="#" class="card-options-link" data-toggle="card-collapse">{% include ui/icon.html icon="chevron-up" %}</a>
+			{% if include.show-fullscreen %}
+			<a href="#" class="card-options-link" data-toggle="card-fullscreen">{% include ui/icon.html icon="maximize" %}</a>
+			{% endif %}
+			<a href="#" class="card-options-link" data-toggle="card-remove">{% include ui/icon.html icon="x" %}</a>
+			{% endif %}
+		</div>
+		{% endunless %}
+	</div>
+   {% endunless %}
+
+   {% if include.alert %}
+	<div class="card-alert alert alert-{{ include.alert-type | default: 'success' }} mb-0">
+		{{ include.alert }}
+	</div>
+	{% endif %}
+	<div class="card-body">
+      {% if include.body-title %}
+      <h3 class="card-title">{{ include.body-title }}</h3>
+      {% endif %}
+
+		{% if include.body %}
+		   {{ include.body }}
+		{% elsif include.show-loader %}
+		<div class="dimmer active">
+			<div class="loader"></div>
+			<div class="dimmer-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!</p>
+			</div>
+		</div>
+		{% else %}
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!</p>
+		{% endif %}
+	</div>
+	{% if include.show-footer %}
+	<div class="card-footer">
+		This is standard card footer
+	</div>
+	{% endif %}
+
+   {% if include.status-bottom %}
+   <div class="card-status card-status-bottom bg-{{ include.status-bottom }}"></div>
+   {% endif %}
+</div>
