@@ -85,7 +85,7 @@
     "autosize": "4.0.2",
     "bootstrap": "twbs/bootstrap#2f549ec",
     "imask": "5.1.5",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "selectize": "0.12.6"
   },
   "bundlesize": [
