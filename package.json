@@ -28,7 +28,9 @@
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "svg-svgo": "svgo -f svg/fe --pretty && svgo -f svg/brand --pretty",
-    "svg-iconfont": "mkdir -p svg-tmp && for i in svg/*/*.svg;do N=`echo $i | sed -e 's/^svg\\///g' | sed -e 's/\\\\.svg$//g' | sed -e 's/\\//-/g'`; echo $i; rsvg-convert $i -o svg-tmp/$N.svg -f svg -w 1000; done && svgo ./svg-tmp/*.svg --disable={removeViewBox} && icon-font-generator ./svg-tmp/*.svg -o fonts/tabler-webfont --html false --cssfontsurl ../fonts/tabler-webfont --csstp build/tabler-webfont.hbs --csspath scss/fonts/_tabler-webfont.scss --center --normalize --name tabler-webfont --types svg,eot,ttf,woff,woff2 --json false && rm -rf svg-tmp && node build/generate-font-codepoints.js"
+    "svg-iconfont": "mkdir -p svg-tmp && for i in svg/*/*.svg;do N=`echo $i | sed -e 's/^svg\\///g' | sed -e 's/\\\\.svg$//g' | sed -e 's/\\//-/g'`; echo $i; rsvg-convert $i -o svg-tmp/$N.svg -f svg -w 1000; done && svgo ./svg-tmp/*.svg --disable={removeViewBox} && icon-font-generator ./svg-tmp/*.svg -o fonts/tabler-webfont --html false --cssfontsurl ../fonts/tabler-webfont --csstp build/tabler-webfont.hbs --csspath scss/fonts/_tabler-webfont.scss --center --normalize --name tabler-webfont --types svg,eot,ttf,woff,woff2 --json false && rm -rf svg-tmp && node build/generate-font-codepoints.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -85,8 +87,9 @@
     "autosize": "4.0.2",
     "bootstrap": "twbs/bootstrap#2f549ec",
     "imask": "5.1.5",
-    "jquery": "3.4.1",
-    "selectize": "0.12.6"
+    "jquery": "3.5.0",
+    "selectize": "0.12.6",
+    "snyk": "^1.316.1"
   },
   "bundlesize": [
     {
@@ -113,5 +116,6 @@
       "path": "./dist/js/tabler.bundle.min.js",
       "maxSize": "1.1 kB"
     }
-  ]
+  ],
+  "snyk": true
 }
