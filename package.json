@@ -81,7 +81,7 @@
     "yaml": "1.6.0"
   },
   "dependencies": {
-    "apexcharts": "3.8.0",
+    "apexcharts": "3.27.0",
     "autosize": "4.0.2",
     "bootstrap": "twbs/bootstrap#2f549ec",
     "imask": "5.1.5",
